@@ -21,7 +21,9 @@ try {
     console.log('inside post');
     console.log(resp);
   })
-
+  .catch((err)=> {
+    console.log(err);
+  })
 
   
 

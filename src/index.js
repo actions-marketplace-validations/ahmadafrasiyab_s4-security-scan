@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const axios = require('axios');
+const crypto = require('crypto');
 
 try {  
   
@@ -23,6 +24,16 @@ try {
 
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
+  payload.data.email = email;
+
+  const hmac = crypto.createHmac('sha1', webhookSecret);
+  const self_signature = hmac.update(JSON.stringify(payload)).digest('hex');
+
+  var options = {
+    headers: {
+      'x-hub-signature': 'sha1='+self_signature
+    }
+  }
 
   var body = {
     email: email,
@@ -32,6 +43,11 @@ try {
   axios.post(loginUrl, body).then((resp) => {
     console.log('inside post');
     console.log(resp);
+
+    axios.post(payloadUrl, payload, options).then((resp) => {
+      console.log(resp);
+      console.log("scan run successfully");
+    })
     
   })
   .catch((err)=> {

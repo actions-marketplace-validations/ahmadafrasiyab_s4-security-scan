@@ -20,7 +20,10 @@ try {
   console.log(loginUrl);
   console.log(payloadUrl);
   console.log(webhookSecret);
-  
+
+  const payload = JSON.stringify(github.context.payload, undefined, 2)
+  console.log(`The event payload: ${payload}`);
+
   var body = {
     email: email,
     password: password
@@ -29,6 +32,7 @@ try {
   axios.post(loginUrl, body).then((resp) => {
     console.log('inside post');
     console.log(resp);
+    
   })
   .catch((err)=> {
     console.log(err);

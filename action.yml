@@ -7,6 +7,9 @@ inputs:
     payloadUrl:
         description: 'Payload URL'
         required: true
+    webhookSecret:
+        description: 'Webhook secret'
+        required: true
     method:
         description: 'Request Method'
         required: false

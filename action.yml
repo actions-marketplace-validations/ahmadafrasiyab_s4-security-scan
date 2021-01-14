@@ -1,8 +1,11 @@
 name: 's4-scan-action'
 description: 'Scan the repo when webhook is fired'
 inputs:
-    url:
+    loginUrl:
         description: 'Request URL'
+        required: true
+    payloadUrl:
+        description: 'Payload URL'
         required: true
     method:
         description: 'Request Method'
@@ -18,10 +21,6 @@ inputs:
         description: 'Content Type'
         required: false
         default: 'application/json'
-    data:
-        description: 'Request Body as JSON String'
-        required: false
-        default: '{}'
     timeout:
         description: 'Request Timeout in Sec'
         required: false

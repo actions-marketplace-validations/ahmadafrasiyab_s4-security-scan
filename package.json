@@ -1,0 +1,26 @@
+{
+  "name": "s4-scan-action",
+  "version": "1.0.0",
+  "description": "An action to run a scan using s4 each time a webhook event is fired.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmadafrasiyab/s4-scan-action.git"
+  },
+  "keywords": [
+    "s-4-scan"
+  ],
+  "author": "ahmadafrasiyab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmadafrasiyab/s4-scan-action/issues"
+  },
+  "homepage": "https://github.com/ahmadafrasiyab/s4-scan-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
+  }
+}

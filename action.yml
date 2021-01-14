@@ -1,0 +1,37 @@
+name: 's4-scan-action'
+description: 'Scan the repo when webhook is fired'
+inputs:
+    url:
+        description: 'Request URL'
+        required: true
+    method:
+        description: 'Request Method'
+        required: false
+        default: 'POST'
+    username:
+        description: 'Auth Username'
+        required: true
+    password:
+        description: 'Auth Password'
+        required: true
+    contentType:
+        description: 'Content Type'
+        required: false
+        default: 'application/json'
+    data:
+        description: 'Request Body as JSON String'
+        required: false
+        default: '{}'
+    timeout:
+        description: 'Request Timeout in Sec'
+        required: false
+        default: '5000'
+    preventFailureOnNoResponse:
+        description: 'Prevent this Action to fail if the request respond without an response'
+        required: false
+outputs:
+    response:
+        description: 'HTTP Response Content'
+runs:
+    using: 'node12'
+    main:  'src/index.js'

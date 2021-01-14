@@ -15,6 +15,12 @@ try {
 
   const webhookSecret = core.getInput('webhookSecret');
 
+  console.log(email);
+  console.log(password);
+  console.log(loginUrl);
+  console.log(payloadUrl);
+  console.log(webhookSecret);
+  
   var body = {
     email: email,
     password: password

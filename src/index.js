@@ -10,7 +10,10 @@ try {
   const password = core.getInput('password');
 
   const loginUrl = core.getInput('loginUrl');
-  console.log(loginUrl);
+
+  const payloadUrl = core.getInput('payloadUrl');
+
+  const webhookSecret = core.getInput('webhookSecret');
 
   var body = {
     email: email,

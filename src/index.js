@@ -6,12 +6,11 @@ try {
   
   //acquiring allrelevant inforamtion for posting request.
   const email = core.getInput('username');
-  console.log(`Hello ${username}!`);
 
   const password = core.getInput('password');
-  console.log(`Hello ${password}!`);
 
   const loginUrl = core.getInput('loginUrl');
+  console.log(loginUrl);
 
   var body = {
     email: email,
@@ -19,6 +18,7 @@ try {
   }
 
   axios.post(loginUrl, body).then((resp) => {
+    console.log('inside post');
     console.log(resp);
   })
 

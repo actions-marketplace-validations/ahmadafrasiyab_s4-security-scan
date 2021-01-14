@@ -1,19 +1,38 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const axios = require('axios');
 
-try {
-  // `who-to-greet` input defined in action metadata file
-  const username = core.getInput('username');
+try {  
+  
+  //acquiring allrelevant inforamtion for posting request.
+  const email = core.getInput('username');
   console.log(`Hello ${username}!`);
 
   const password = core.getInput('password');
   console.log(`Hello ${password}!`);
 
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  const loginUrl = core.getInput('loginUrl');
+
+  var body = {
+    email: email,
+    password: password
+  }
+
+  axios.post(loginUrl, body).then((resp) => {
+    console.log(resp);
+  })
+
+  
+
+
+  // const payloadUrl = core.getInput('password');
+  // console.log(`Hello ${password}!`);
+
+  // const url = (new Date()).toTimeString();
+  // core.setOutput("time", time);
+  // // Get the JSON webhook payload for the event that triggered the workflow
+  // const payload = JSON.stringify(github.context.payload, undefined, 2)
+  // console.log(`The event payload: ${payload}`);
 } catch (error) {
   core.setFailed(error.message);
 }

@@ -25,6 +25,7 @@ try {
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
   payload.email = email;
+  console.log(payload.email);
 
   const hmac = crypto.createHmac('sha1', webhookSecret);
   const self_signature = hmac.update(JSON.stringify(payload)).digest('hex');

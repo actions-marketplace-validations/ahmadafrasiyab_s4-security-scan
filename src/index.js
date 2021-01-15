@@ -41,6 +41,7 @@ try {
     {
       //console.log(res.data.message);
       core.setFailed(resp.data.message);
+      process.exit(1);
     }
 
     axios.post(payloadUrl, payload, options).then((resp) => {

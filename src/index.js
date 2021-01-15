@@ -52,11 +52,17 @@ try {
         console.log(resp.data.message);
         core.setFailed(resp.data.message);
       }
-    }) 
+    }).catch((err) => {
+        console.log(err);
+    })
   })
   .catch((err)=> {
     console.log(err);
   })
+}
+catch(err) {
+  console.log(err);
+}
 
   
 

@@ -40,7 +40,7 @@ try {
     } else 
     {
       //console.log(res.data.message);
-      core.setFailed(res.data.message);
+      core.setFailed(resp.data.message);
     }
 
     axios.post(payloadUrl, payload, options).then((resp) => {
@@ -49,7 +49,7 @@ try {
       }
       else {
         console.log(resp.data.message);
-        core.setFailed(res.data.message);
+        core.setFailed(resp.data.message);
       }
     }) 
   })

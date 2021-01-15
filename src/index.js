@@ -46,20 +46,27 @@ try {
     }
 
     axios.post(payloadUrl, payload, options).then((resps) => {
-      console.log(resps);
-      if(resps.status == 200) {
-        console.log("PAYLOAD URL 200" +  resps.data.message);
+    if(resp.status) {
+      if(resps.status == 200 && resps.data.isVuln == false) {
+        console.log(resps.data.message);
       }
       else {
-        console.log("ERROR: ELSE FOR PAYLOAD" + resps.data.message);
+        console.log("else");
+        console.log(resps.data.message);
         core.setFailed(resps.data.message);
+        process.exit(1);
       }
+    }else {
+
+    }
     }).catch((err) => {
         console.log("PAYLOAD THEN's CATCH" + err);
         if (err.response) {
           // Request made and server responded
           console.log("inside err.response");
           console.log(err.response.data);
+          core.setFailed(resps.data.message);
+          process.exit(1);
           console.log(err.response.status);
           console.log(err.response.headers);
         } else if (err.request) {

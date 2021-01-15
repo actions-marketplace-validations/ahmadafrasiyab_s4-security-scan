@@ -20,17 +20,6 @@ inputs:
     password:
         description: 'Auth Password'
         required: true
-    contentType:
-        description: 'Content Type'
-        required: false
-        default: 'application/json'
-    timeout:
-        description: 'Request Timeout in Sec'
-        required: false
-        default: '5000'
-    preventFailureOnNoResponse:
-        description: 'Prevent this Action to fail if the request respond without an response'
-        required: false
 outputs:
     response:
         description: 'HTTP Response Content'

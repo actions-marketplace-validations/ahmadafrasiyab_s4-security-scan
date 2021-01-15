@@ -16,17 +16,9 @@ try {
 
   const webhookSecret = core.getInput('webhookSecret');
 
-  console.log(email);
-  console.log(password);
-  console.log(loginUrl);
-  console.log(payloadUrl);
-  console.log(webhookSecret);
-
   var payload = JSON.stringify(github.context.payload, undefined, 2)
   payload = JSON.parse(payload);
-  console.log(`The event payload: ${payload}`);
   payload.email = email;
-  console.log(payload.email);
 
   const hmac = crypto.createHmac('sha1', webhookSecret);
   const self_signature = hmac.update(JSON.stringify(payload)).digest('hex');
@@ -43,14 +35,23 @@ try {
   }
 
   axios.post(loginUrl, body).then((resp) => {
-    console.log('inside post');
-    console.log(resp);
+    if (resp.data.auth == true) {
+    console.log(resp.data.message);
+    } else 
+    {
+      //console.log(res.data.message);
+      core.setFailed(res.data.message);
+    }
 
     axios.post(payloadUrl, payload, options).then((resp) => {
-      console.log(resp);
-      console.log("scan run successfully");
-    })
-    
+      if(resp.status == 200) {
+        console.log(resp.data.message);
+      }
+      else {
+        console.log(resp.data.message);
+        core.setFailed(res.data.message);
+      }
+    }) 
   })
   .catch((err)=> {
     console.log(err);

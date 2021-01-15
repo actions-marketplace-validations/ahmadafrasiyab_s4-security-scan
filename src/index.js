@@ -54,6 +54,20 @@ try {
       }
     }).catch((err) => {
         console.log("PAYLOAD THEN's CATCH" + err);
+        if (err.response) {
+          // Request made and server responded
+          console.log("inside err.response");
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (err.request) {
+          console.log("inside err.request");
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', err.message);
+        }
     })
   })
   .catch((err)=> {

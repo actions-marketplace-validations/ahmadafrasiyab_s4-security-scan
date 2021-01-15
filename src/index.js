@@ -44,16 +44,16 @@ try {
       process.exit(1);
     }
 
-    axios.post(payloadUrl, payload, options).then((resp) => {
-      if(resp.status == 200) {
-        console.log("PAYLOAD URL 200" +  resp.data.message);
+    axios.post(payloadUrl, payload, options).then((resps) => {
+      if(resps.status == 200) {
+        console.log("PAYLOAD URL 200" +  resps.data.message);
       }
       else {
-        console.log("ERROR: ELSE FOR PAYLOAD" + resp.data.message);
-        core.setFailed(resp.data.message);
+        console.log("ERROR: ELSE FOR PAYLOAD" + resps.data.message);
+        core.setFailed(resps.data.message);
       }
     }).catch((err) => {
-        console.log("PAYLOAD THEN's CATCH" + err);
+        console.log("PAYLOAD THEN's CATCH" + err + resps);
     })
   })
   .catch((err)=> {

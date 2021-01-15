@@ -27,6 +27,7 @@ try {
     headers: {
       'x-hub-signature': 'sha1='+self_signature
     }
+
   }
 
   var body = {
@@ -45,6 +46,7 @@ try {
     }
 
     axios.post(payloadUrl, payload, options).then((resps) => {
+      console.log(resps);
       if(resps.status == 200) {
         console.log("PAYLOAD URL 200" +  resps.data.message);
       }

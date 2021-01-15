@@ -51,7 +51,6 @@ try {
         console.log(resps.data.message);
       }
       else {
-        console.log("else");
         console.log(resps.data.message);
         core.setFailed(resps.data.message);
         process.exit(1);

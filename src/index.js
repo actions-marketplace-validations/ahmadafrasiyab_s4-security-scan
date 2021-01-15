@@ -43,10 +43,6 @@ try {
       core.setFailed(resp.data.message);
       process.exit(1);
     }
-  })
-  .catch((err)=> {
-    console.log("LOGIN THEN's CATCH" + err);
-  })
 
     axios.post(payloadUrl, payload, options).then((resps) => {
       if(resps.status == 200) {
@@ -73,6 +69,10 @@ try {
           console.log('Error', err.message);
         }
     })
+  })
+  .catch((err)=> {
+    console.log("LOGIN THEN's CATCH" + err);
+  })
 }
 catch (error) {
   core.setFailed("TRY's CATCH" + error.message);

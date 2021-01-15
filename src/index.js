@@ -53,7 +53,7 @@ try {
         core.setFailed(resps.data.message);
       }
     }).catch((err) => {
-        console.log("PAYLOAD THEN's CATCH" + err + resps);
+        console.log("PAYLOAD THEN's CATCH" + err);
     })
   })
   .catch((err)=> {

@@ -46,20 +46,20 @@ try {
 
     axios.post(payloadUrl, payload, options).then((resp) => {
       if(resp.status == 200) {
-        console.log(resp.data.message);
+        console.log("PAYLOAD URL 200" +  resp.data.message);
       }
       else {
-        console.log(resp.data.message);
+        console.log("ERROR: ELSE FOR PAYLOAD" + resp.data.message);
         core.setFailed(resp.data.message);
       }
     }).catch((err) => {
-        console.log(err);
+        console.log("PAYLOAD THEN's CATCH" + err);
     })
   })
   .catch((err)=> {
-    console.log(err);
+    console.log("LOGIN THEN's CATCH" + err);
   })
 }
 catch (error) {
-  core.setFailed(error.message);
+  core.setFailed("TRY's CATCH" + error.message);
 }

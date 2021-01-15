@@ -60,21 +60,6 @@ try {
     console.log(err);
   })
 }
-catch(err) {
-  console.log(err);
-}
-
-  
-
-
-  // const payloadUrl = core.getInput('password');
-  // console.log(`Hello ${password}!`);
-
-  // const url = (new Date()).toTimeString();
-  // core.setOutput("time", time);
-  // // Get the JSON webhook payload for the event that triggered the workflow
-  // const payload = JSON.stringify(github.context.payload, undefined, 2)
-  // console.log(`The event payload: ${payload}`);
-} catch (error) {
+catch (error) {
   core.setFailed(error.message);
 }

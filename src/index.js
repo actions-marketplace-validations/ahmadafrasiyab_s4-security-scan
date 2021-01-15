@@ -23,6 +23,7 @@ try {
   console.log(webhookSecret);
 
   const payload = JSON.stringify(github.context.payload, undefined, 2)
+  payload = JSON.parse(payload);
   console.log(`The event payload: ${payload}`);
   payload.email = email;
   console.log(payload.email);

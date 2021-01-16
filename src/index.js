@@ -40,9 +40,8 @@ try {
     console.log(resp.data.message);
     }else 
     {
-      //console.log(res.data.message);
       core.setFailed(resp.data.message);
-      //process.exit(1);
+      process.exit(1);
     }
 
     axios.post(payloadUrl, payload, options).then((resps) => {

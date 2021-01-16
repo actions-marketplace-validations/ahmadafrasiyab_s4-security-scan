@@ -91,19 +91,19 @@ is only supported as JSON, and not currently available as urlencoded form parame
 ```
 
 *Required*. The HTTP URI of the login endpoint to invoke. The endpoint must accept 
-an HTTP POST request. <br/><br/>
+an HTTP POST request. Provided by Digitsec.<br/><br/>
 
 
 ```yml 
   payloadUrl: "https://your_payloadUrl_for_receiving_the_sent_payload"
 ```
 
-*Required*. The HTTP URI of the api endpoint for receiving the payload. <br/><br/>
+*Required*. The HTTP URI of the api endpoint for receiving the payload. Provided by Digitsec.<br/><br/>
 
 ```yml 
   webhookSecret: YOUR_WEBHOOK_SECRET
 ```
-*Required*. The secret received from S4. This is used to authenticate the payload <br/><br/>
+*Required*. The secret received from S4. This is used to authenticate the payload. Provided by Digitsec. <br/><br/>
 
 ```yml 
   method: The HTTP method.
@@ -113,12 +113,12 @@ The HTTP method to be used. Only POST is supported at this point <br/><br/>
 ```yml 
   username: Your S4 username.
 ```
-*Required*. Your S4 username for login <br/><br/>
+*Required*. Your S4 username for login. <br/><br/>
 
 ```yml 
   password: Your S4 password.
 ```
-*Required*. Your S4 password for login <br/><br/>
+*Required*. Your S4 password for login. <br/><br/>
 
 Credentials to be used for BASIC authentication against the endpoint.<br/><br/>
 

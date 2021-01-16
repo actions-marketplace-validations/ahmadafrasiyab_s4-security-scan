@@ -50,7 +50,6 @@ try {
         console.log(resps.data.message);
       }
       else {
-        console.log(resps.data.message);
         core.setFailed(resps.data.message);
       }
     }else {

@@ -46,7 +46,7 @@ try {
 
     axios.post(payloadUrl, payload, options).then((resps) => {
     if(resps.status == 200) {
-      if(resps.data.isVuln == false) {
+      if(resps.data.isVuln === false) {
         console.log(resps.data.message);
       }
       else {

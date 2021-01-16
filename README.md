@@ -49,11 +49,32 @@ The following are example snippets for a Github yaml workflow configuration. <br
 Send the JSON (default) payload to a webhook:
 
 ```yml
-    - name: Invoke deployment hook
-      uses: distributhor/workflow-webhook@v1
-      env:
-        webhook_url: ${{ secrets.WEBHOOK_URL }}
-        webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+ # This is a basic workflow that is manually triggered
+name: learn-github-actions
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  pull_request:
+    branches: master
+    types: [labeled]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  s4_login:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Deploy Stage
+          uses: owner/s4-scan-action@main
+          with:
+              timeout: 15000 
+              loginUrl: ${{secrets.LOGIN_URL}}   
+              payloadUrl: ${{secrets.WEBHOOK_URL}}
+              webhookSecret: ${{secrets.WEBHOOK_SECRET}}
+              username: ${{secrets.S4_USERNAME}}
+              password: ${{secrets.S4_PASSWORD}}
+              method: 'POST'
 ```
 
 Will deliver a payload with the following properties:
@@ -70,115 +91,46 @@ Will deliver a payload with the following properties:
 ```
 <br/>
 
-Add additional data to the payload:
-
-```yml
-    - name: Invoke deployment hook
-      uses: distributhor/workflow-webhook@v1
-      env:
-        webhook_url: ${{ secrets.WEBHOOK_URL }}
-        webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-        data: '{ "weapon": "hammer", "drink" : "beer" }'
-```
-
-The additional information will become available on a `data` property,
-and now look like:
-
-```json
-{
-    "event": "push",
-    "repository": "owner/project",
-    "commit": "a636b6f0861bbee98039bf3df66ee13d8fbc9c74",
-    "ref": "refs/heads/master",
-    "head": "",
-    "workflow": "Build and deploy",
-    "data": {
-        "weapon": "hammer",
-        "drink": "beer"
-    }
-}
-```
-
-Send a form-urlencoded payload instead:
-
-```yml
-    - name: Invoke deployment hook
-      uses: distributhor/workflow-webhook@v1
-      env:
-        webhook_type: 'form-urlencoded'
-        webhook_url: ${{ secrets.WEBHOOK_URL }}
-        webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-        data: 'weapon=hammer&drink=beer'
-```
-
-Will set the `Content-Type` header to `application/x-www-form-urlencoded` and deliver:
-
-```csv
-"event=push&repository=owner/project&commit=a636b6f0....&weapon=hammer&drink=beer"
-```
-
-Finally, if you prefer to receive the whole original GitHub payload as JSON (as opposed 
-to the default JSON snippet above), then configure the webhook with a `webhook_type` of
-`json-extended`:
-
-```yml
-    - name: Invoke deployment hook
-      uses: distributhor/workflow-webhook@v1
-      env:
-        webhook_type: 'json-extended'
-        webhook_url: ${{ secrets.WEBHOOK_URL }}
-        webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-        data: '{ "weapon": "hammer", "drink" : "beer" }'
-```
-
-You can still add custom JSON data, which will be available on a `data` property, included 
-on the GitHub payload. Importantly, the sending of the whole GitHub payload
+The sending of the whole GitHub payload
 is only supported as JSON, and not currently available as urlencoded form parameters.
 
 ## Arguments
 
 ```yml 
-  webhook_url: "https://your.webhook"
+  loginUrl: "https://your_login_url_for_basic_authentication"
 ```
 
-*Required*. The HTTP URI of the webhook endpoint to invoke. The endpoint must accept 
+*Required*. The HTTP URI of the login endpoint to invoke. The endpoint must accept 
 an HTTP POST request. <br/><br/>
 
 
 ```yml 
-  webhook_secret: "Y0uR5ecr3t"
+  payloadUrl: "https://your_payloadUrl_for_receiving_the_sent_payload"
 ```
 
-*Required*. The secret with which to generate the signature hash. <br/><br/>
+*Required*. The HTTP URI of the api endpoint for receiving the payload. <br/><br/>
 
 ```yml 
-  webhook_auth: "username:password"
+  webhookSecret: YOUR_WEBHOOK_SECRET
 ```
-
-Credentials to be used for BASIC authentication against the endpoint. If not configured,
-authentication is assumed not to be required. If configured, it must follow the format
-`username:password`, which will be used as the BASIC auth credential.<br/><br/>
+*Required*. The secret received from S4. This is used to authenticate the payload <br/><br/>
 
 ```yml 
-  webhook_type: "json | form-urlencoded | json-extended"
+  method: The HTTP method.
 ```
-
-The default endpoint type is JSON. The argument is only required if you wish to send urlencoded form data. 
-Otherwise it's optional. <br/><br/>
+The HTTP method to be used. Only POST is supported at this point <br/><br/>
 
 ```yml 
-  data: "Additional JSON or URL encoded data"
+  username: Your S4 username.
 ```
+*Required*. Your S4 username for login <br/><br/>
 
-Additional data to include in the payload. It is optional. This data will attempted to be 
-merged 'as-is' with the existing payload, and is expected to already be sanitized and valid.
+```yml 
+  password: Your S4 password.
+```
+*Required*. Your S4 password for login <br/><br/>
 
-In the case of JSON, the custom data will be available on a property named `data`, and it will be 
-run through a JSON validator. Invalid JSON will cause the action to break and exit. For example, using 
-single quotes for JSON properties and values instead of double quotes, will show the 
-following (somewhat confusing) message in your workflow output: `Invalid numeric literal`. 
-Such messages are the direct output from the validation library <https://stedolan.github.io/jq/>. 
-The supplied JSON must pass the validation run through `jq`.
+Credentials to be used for BASIC authentication against the endpoint.<br/><br/>
 
 
 ## License

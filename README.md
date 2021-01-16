@@ -6,7 +6,7 @@ An action to run a scan using s4 each time a webhook event is fired.
 
 A Github workflow action to call the remote S4 webhook endpoint with a JSON payload, and support for BASIC authentication. This action runs a scan based on the event that is configured in your workflow. The scan results are posted in a comment on the pull request. A link is generated to view the detailed results as well as shown:
 
-![a](s4-scan-action/src/results.png)
+![a](s4-scan-action/src/results.PNG)
 
 A hash signature is passed with each request, 
 derived from the payload and a configurable secret token. The hash signature is 

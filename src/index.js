@@ -52,32 +52,16 @@ try {
       else {
         console.log(resps.data.message);
         core.setFailed(resps.data.message);
-        //process.exit(1);
       }
     }else {
         core.setFailed(resps.data.message);
     }
     }).catch((err) => {
-        if (err.response) {
-          // Request made and server responded
-          console.log("inside err.response");
-          console.log(err.response.data);
-          core.setFailed(err.response.data);
-        } else if (err.request) {
-          console.log("inside err.request");
-          // The request was made but no response was received
-          console.log(err.request);
-          core.setFailed(err.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', err.message);
-          core.setFailed(err.message);
-        }
+        core.setFailed(err.message);
     })
   })
   .catch((err)=> {
-    console.log(err);
-    core.setFailed(err);
+    core.setFailed(err.message);
   })
 }
 catch (error) {

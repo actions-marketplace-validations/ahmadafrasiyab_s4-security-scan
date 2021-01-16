@@ -38,50 +38,49 @@ try {
   axios.post(loginUrl, body).then((resp) => {
     if (resp.data.auth == true) {
     console.log(resp.data.message);
-    } else 
+    }else 
     {
       //console.log(res.data.message);
       core.setFailed(resp.data.message);
-      process.exit(1);
+      //process.exit(1);
     }
 
     axios.post(payloadUrl, payload, options).then((resps) => {
-    if(resp.status) {
-      if(resps.status == 200 && resps.data.isVuln == false) {
+    if(resps.status == 200) {
+      if(resps.data.isVuln == false) {
         console.log(resps.data.message);
       }
       else {
         console.log(resps.data.message);
         core.setFailed(resps.data.message);
-        process.exit(1);
+        //process.exit(1);
       }
     }else {
-
+        core.setFailed(resps.data.message);
     }
     }).catch((err) => {
-        console.log("PAYLOAD THEN's CATCH" + err);
         if (err.response) {
           // Request made and server responded
           console.log("inside err.response");
           console.log(err.response.data);
-          core.setFailed(resps.data.message);
-          process.exit(1);
-          console.log(err.response.status);
-          console.log(err.response.headers);
+          core.setFailed(err.response.data);
         } else if (err.request) {
           console.log("inside err.request");
           // The request was made but no response was received
           console.log(err.request);
+          core.setFailed(err.request);
         } else {
           // Something happened in setting up the request that triggered an Error
           console.log('Error', err.message);
+          core.setFailed(err.message);
         }
     })
   })
   .catch((err)=> {
-    console.log("LOGIN THEN's CATCH" + err);
+    console.log(err);
+    core.setFailed(err);
   })
 }
 catch (error) {
-  core.setFailed("TRY's CATCH" + error.message);
+  core.setFailed(error.message);
 }

@@ -4,7 +4,9 @@ An action to run a scan using s4 each time a webhook event is fired.
 [![GitHub Release][ico-release]][link-github-release]
 [![License][ico-license]](LICENSE)
 
-A Github workflow action to call the remote S4 webhook endpoint with a JSON payload, and support for BASIC authentication. This action runs a scan based on the event that is configured in your workflow. The scan results are posted in a comment on the pull request. A link is generated to view the detailed results as well. 
+A Github workflow action to call the remote S4 webhook endpoint with a JSON payload, and support for BASIC authentication. This action runs a scan based on the event that is configured in your workflow. The scan results are posted in a comment on the pull request. A link is generated to view the detailed results as well as shown:
+
+![](s4-scan-action/src/results.PNG)
 
 A hash signature is passed with each request, 
 derived from the payload and a configurable secret token. The hash signature is 
@@ -30,17 +32,6 @@ These values map to the payload as follows:
     "workflow": "GITHUB_WORKFLOW"
 }
 ```
-
-If you are interested in receiving more comprehensive data about the GitHub event than just the 
-above fields, then the action can be configured to send the whole JSON payload of the GitHub event, 
-as per the `GITHUB_EVENT_PATH` variable in the environment variable documentation referenced above. 
-The official documentation and reference for the payload itself can be found here: 
-<https://developer.github.com/webhooks/event-payloads/>, and the details on how to configure it, 
-is further down in the **Usage** section of this README.
-
-Additional (custom) data can also be added/merged to the payload (see further down).
-
-
 ## Usage
 
 The following are example snippets for a Github yaml workflow configuration. <br/>
@@ -100,19 +91,19 @@ is only supported as JSON, and not currently available as urlencoded form parame
 ```
 
 *Required*. The HTTP URI of the login endpoint to invoke. The endpoint must accept 
-an HTTP POST request. <br/><br/>
+an HTTP POST request. Provided by Digitsec.<br/><br/>
 
 
 ```yml 
   payloadUrl: "https://your_payloadUrl_for_receiving_the_sent_payload"
 ```
 
-*Required*. The HTTP URI of the api endpoint for receiving the payload. <br/><br/>
+*Required*. The HTTP URI of the api endpoint for receiving the payload. Provided by Digitsec.<br/><br/>
 
 ```yml 
   webhookSecret: YOUR_WEBHOOK_SECRET
 ```
-*Required*. The secret received from S4. This is used to authenticate the payload <br/><br/>
+*Required*. The secret received from S4. This is used to authenticate the payload. Provided by Digitsec. <br/><br/>
 
 ```yml 
   method: The HTTP method.
@@ -122,12 +113,12 @@ The HTTP method to be used. Only POST is supported at this point <br/><br/>
 ```yml 
   username: Your S4 username.
 ```
-*Required*. Your S4 username for login <br/><br/>
+*Required*. Your S4 username for login. <br/><br/>
 
 ```yml 
   password: Your S4 password.
 ```
-*Required*. Your S4 password for login <br/><br/>
+*Required*. Your S4 password for login. <br/><br/>
 
 Credentials to be used for BASIC authentication against the endpoint.<br/><br/>
 

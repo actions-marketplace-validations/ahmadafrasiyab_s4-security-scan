@@ -50,17 +50,17 @@ try {
         console.log(resps.data.message);
       }
       else {
-        core.setFailed(resps.data.message);
+        core.setFailed("true"+resps.data.message);
       }
     }else {
-        core.setFailed(resps.data.message);
+        core.setFailed("not200"+resps.data.message);
     }
     }).catch((err) => {
-        core.setFailed(err.message);
+        core.setFailed("payloadcatch"+err.message);
     })
   })
   .catch((err)=> {
-    core.setFailed(err.message);
+    core.setFailed("login catch"+err.message);
   })
 }
 catch (error) {

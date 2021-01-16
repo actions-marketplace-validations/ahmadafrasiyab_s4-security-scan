@@ -1,8 +1,6 @@
 # s4-scan-action
 An action to run a scan using s4 each time a webhook event is fired. 
 
-# Workflow Webhook Action
-
 [![GitHub Release][ico-release]][link-github-release]
 [![License][ico-license]](LICENSE)
 

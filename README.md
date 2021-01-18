@@ -1,5 +1,7 @@
 # s4-scan-action
-![Image of Yaktocat][ico-S4][width=0.5\textwidth]
+![Image of S4][ico-S4]
+
+![smiley](../main/src/assets/S4.png){:height="36px" width="36px"}
 An action to run a scan using s4 each time a webhook event is fired. 
 
 [![GitHub Release][ico-release]][link-github-release]

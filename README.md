@@ -1,5 +1,5 @@
 # s4-scan-action
-![Image of S4](../main/src/assets/S4.png){:height=36 width=36}
+![Image of S4](../main/src/assets/S4.png){:height="36px"}
 An action to run a scan using s4 each time a webhook event is fired. 
 
 [![GitHub Release][ico-release]][link-github-release]

@@ -132,4 +132,4 @@ GNU Lesser General Public License v2.1 (LGPL-2.1 License). Please see [License F
 
 
 [ico-license]: https://img.shields.io/cpan/l/Config-Augeas
-[link-github-release]: https://img.shields.io/github/v/tag/ahmadafrasiyab/s4-scan-action.svg?sort=semver
+[link-github-release]: https://img.shields.io/github/v/tag/ahmadafrasiyab/s4-scan-action.svg

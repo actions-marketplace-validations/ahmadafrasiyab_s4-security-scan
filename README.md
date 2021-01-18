@@ -132,4 +132,4 @@ GNU Lesser General Public License v2.1 (LGPL-2.1 License). Please see [License F
 
 
 [ico-license]: https://img.shields.io/cpan/l/Config-Augeas
-[link-github-release]: https://github.com/distributhor/workflow-webhook/releases
+[link-github-release]: https://github.com/ahmadafrasiyab/s4-scan-action/releases/tag/v1.0-alpha

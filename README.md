@@ -128,9 +128,8 @@ Credentials to be used for BASIC authentication against the endpoint.<br/><br/>
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+GNU Lesser General Public License v2.1 (LGPL-2.1 License). Please see [License File](LICENSE) for more information.
 
-[ico-release]: https://img.shields.io/github/tag/distributhor/workflow-webhook.svg
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg
+
+[ico-license]: https://img.shields.io/cpan/l/Config-Augeas
 [link-github-release]: https://github.com/distributhor/workflow-webhook/releases
-[ico-S4]: ../main/src/assets/S4.png

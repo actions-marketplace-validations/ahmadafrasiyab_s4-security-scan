@@ -87,7 +87,7 @@ is only supported as JSON, and not currently available as urlencoded form parame
 ## Arguments
 
 ```yml 
-  loginUrl: "https://your_login_url_for_basic_authentication"
+  loginUrl:${{secrets.LOGIN_URL}}  
 ```
 
 *Required*. The HTTP URI of the login endpoint to invoke. The endpoint must accept 
@@ -95,28 +95,28 @@ an HTTP POST request. Provided by Digitsec.<br/><br/>
 
 
 ```yml 
-  payloadUrl: "https://your_payloadUrl_for_receiving_the_sent_payload"
+  payloadUrl: ${{secrets.WEBHOOK_URL}}
 ```
 
 *Required*. The HTTP URI of the api endpoint for receiving the payload. Provided by Digitsec.<br/><br/>
 
 ```yml 
-  webhookSecret: YOUR_WEBHOOK_SECRET
+  webhookSecret: ${{secrets.WEBHOOK_SECRET}}
 ```
 *Required*. The secret received from S4. This is used to authenticate the payload. Provided by Digitsec. <br/><br/>
 
 ```yml 
-  method: The HTTP method.
+  method: 'POST'
 ```
 The HTTP method to be used. Only POST is supported at this point <br/><br/>
 
 ```yml 
-  username: Your S4 username.
+  username: ${{secrets.S4_USERNAME}}
 ```
 *Required*. Your S4 username for login. <br/><br/>
 
 ```yml 
-  password: Your S4 password.
+  password: ${{secrets.S4_PASSWORD}}
 ```
 *Required*. Your S4 password for login. <br/><br/>
 

@@ -1,5 +1,5 @@
 # s4-scan-action
-[ico-S4] | width=50px | alt=Bridge
+[![GitHub Release][ico-S4]][link-github-release]
 An action to run a scan using s4 each time a webhook event is fired. 
 
 [![GitHub Release][ico-release]][link-github-release]

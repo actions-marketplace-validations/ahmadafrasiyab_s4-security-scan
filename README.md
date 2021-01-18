@@ -1,5 +1,5 @@
 # s4-scan-action
-[![GitHub Release][ico-S4]][link-github-release]
+[![Hello][ico-S4]][]
 An action to run a scan using s4 each time a webhook event is fired. 
 
 [![GitHub Release][ico-release]][link-github-release]

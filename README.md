@@ -37,7 +37,7 @@ These values map to the payload as follows:
 ```
 ## Usage
 
-The following are example snippets for a Github yaml workflow configuration. <br/>
+The following are example snippets for a Github yaml workflow configuration. Feel free to change the trigger at which you want your flow to run e.g. you can run it when a pull request is opened by changing the type field from 'labeled' to 'opened'  <br/>
 
 Send the JSON (default) payload to a webhook:
 

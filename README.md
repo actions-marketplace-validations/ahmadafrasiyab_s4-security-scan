@@ -11,7 +11,7 @@ A Github workflow action to call the remote S4 webhook endpoint with a JSON payl
 
 ![Optional Text](../main/src/assets/results.png)
 
-The output also includes the results of the security gate check and if a pull request is created (as configured by user in S4)
+The output also includes the results of the security gate check and if a pull request is created (as configured by user in S4) <br/>
 ![Optional Text](../main/src/assets/results2.png)
 
 A hash signature is passed with each request, 

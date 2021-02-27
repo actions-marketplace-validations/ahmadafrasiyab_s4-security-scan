@@ -65,7 +65,6 @@ jobs:
         - name: Deploy Stage
           uses: owner/s4-scan-action@main
           with:
-              timeout: 15000 
               loginUrl: ${{secrets.LOGIN_URL}}   
               payloadUrl: ${{secrets.WEBHOOK_URL}}
               webhookSecret: ${{secrets.WEBHOOK_SECRET}}

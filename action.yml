@@ -26,3 +26,7 @@ outputs:
 runs:
     using: 'node12'
     main:  'src/index.js'
+
+branding:
+    icon: ''
+    color: ''

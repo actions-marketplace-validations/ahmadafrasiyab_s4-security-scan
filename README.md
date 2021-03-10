@@ -1,4 +1,4 @@
-# s4-scan-action
+# s4-security-scan
 
 <img src="../main/src/assets/S4.png" width="70"/>
 

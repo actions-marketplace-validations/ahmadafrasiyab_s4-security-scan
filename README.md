@@ -63,7 +63,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Deploy Stage
-          uses: owner/s4-scan-action@main
+          uses: ahmadafrasiyab/s4-security-scan@v1.1-beta
           with:
               loginUrl: ${{secrets.LOGIN_URL}}   
               payloadUrl: ${{secrets.WEBHOOK_URL}}

@@ -1,4 +1,4 @@
-name: 's4-scan-action'
+name: 's4-security-scan'
 description: 'Scan the repo when webhook is fired'
 inputs:
     loginUrl:
